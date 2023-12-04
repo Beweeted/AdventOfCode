@@ -4,8 +4,6 @@
 # - Sum all such numbers into a single total.
 # - This total is the answer to the puzzle.
 
-import re
-
 file1 = open('input.txt', 'r')
 lines = file1.readlines()
 
