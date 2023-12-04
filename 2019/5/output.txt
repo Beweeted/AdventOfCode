@@ -1,0 +1,45 @@
+Starting array: 3 9 8 9 10 9 4 9 99 -1 8
+
+Inputs: 
+Indexer: 0
+Opblock: 0003
+
+Op: 03  Params: 000  First param: 0
+Next values: 9 8 9
+Overriding next param: must be immediate.
+Getting immediate.  Value: 9
+Inputting.  Destination: 9  Value: 8
+
+
+
+Indexer: 2
+Opblock: 0008
+
+Op: 08  Params: 000  First param: 0
+Next values: 9 10 9
+Getting positional.  Index: 9  Value: 8
+Getting positional.  Index: 10  Value: 8
+Overriding next param: must be immediate.
+Getting immediate.  Value: 9
+Storing if equal.  Equal!  Storing 1 at 9
+
+
+
+Indexer: 6
+Opblock: 0004
+
+Op: 04  Params: 000  First param: 0
+Next values: 9 99 1
+Overriding next param: must be immediate.
+Getting immediate.  Value: 9
+Outputting.  Source: 9  Value: 1
+
+
+
+Indexer: 8
+Opblock: 00099
+
+Op: 99  Params: 0000  First param: 0
+Next values: 1 8
+Halting.
+Array: 3 9 8 9 10 9 4 9 99 1 8
