@@ -36,12 +36,9 @@ def sum_fuel(mass_list, recursive=True):
 
 def main(mass_file, recursive=True):
     mass_input = get_input(mass_file)
-    if recursive:
-        total_fuel = sum_fuel(mass_input, recursive)
-        output = f'Recursive fuel required: {total_fuel}'
-    else:
-        total_fuel = sum_fuel(mass_input, recursive)
-        output = f'Simple fuel required: {total_fuel}'
+    total_fuel = sum_fuel(mass_input, recursive)
+    output = 'Recursive' if recursive else 'Simple'
+    output += f' fuel required: {total_fuel}'
     return output
 
 
