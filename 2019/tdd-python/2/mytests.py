@@ -11,9 +11,17 @@ class MyTestCase(unittest.TestCase):
 
     def test_intcode_add_and_store(self):
         intcode = get_intcode('sample.txt')
-        add_values_and_store(intcode, 9, 10, 2)
-        self.assertEqual(intcode[10], 70)
+        add_values_and_store(intcode, 5, 6, 2)
+        self.assertEqual(intcode[10], 53)
 
+    def test_intcode_multiply_and_store(self):
+        intcode = get_intcode('sample.txt')
+        multiply_values_and_store(intcode, 5, 6, 2)
+        self.assertEqual(intcode[10], 150)
+
+    def test_run_intcode_program(self):
+        intcode = get_intcode('sample.txt')
+        self.assertEqual(run_intcode(intcode), 3500)
 
 
 if __name__ == '__main__':
