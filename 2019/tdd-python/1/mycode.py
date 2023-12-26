@@ -52,6 +52,12 @@ def recursive_main(mass_file):
     return output
 
 
+def main(mass_file, recursive='True'):
+    if recursive:
+        return simple_main(mass_file)
+    else:
+        return recursive_main(mass_file)
+
 if __name__ == '__main__':
     input_file = 'input.txt'
     print(simple_main(input_file))

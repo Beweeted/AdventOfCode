@@ -25,5 +25,5 @@ class MyTests(unittest.TestCase):
         self.assertEqual(sum_fuel_recursive(get_input('sample.txt')), 51316)
 
     def test_main(self):
-        self.assertEqual(simple_main('sample.txt'), 'Simple fuel required: 34241')
-        self.assertEqual(recursive_main('sample.txt'), 'Recursive fuel required: 51316')
+        self.assertEqual(main('sample.txt', False), 'Simple fuel required: 34241')
+        self.assertEqual(main('sample.txt', True), 'Recursive fuel required: 51316')
