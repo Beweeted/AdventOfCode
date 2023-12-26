@@ -40,9 +40,12 @@ def get_intcode(filename):
         return intcode
 
 
-def main():
-    pass
+def main(filename):
+    intcode = get_intcode(filename)
+    result = run_intcode(intcode)
+    print(f'{result=}')
+    return result
 
 
 if __name__ == '__main__':
-    main()
+    main('input.txt')

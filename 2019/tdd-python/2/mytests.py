@@ -23,6 +23,9 @@ class MyTestCase(unittest.TestCase):
         intcode = get_intcode('sample.txt')
         self.assertEqual(run_intcode(intcode), 3500)
 
+    def test_run_main(self):
+        self.assertEqual(main('sample.txt'), 3500)
+
 
 if __name__ == '__main__':
     unittest.main()
