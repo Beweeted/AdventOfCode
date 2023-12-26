@@ -18,7 +18,7 @@ def add_values_and_store(intcode, idx):
     val2 = intcode[intcode[idx+1]]
     dest = intcode[idx+2]
     store = val1 + val2
-    print(f'Adding: {val1=}, {val2=}, {dest=}, {store=}')
+    print(f'Adding: {val1=}, {val2=}, {store=}, {dest=}')
     intcode[dest] = store
 
 
@@ -26,9 +26,9 @@ def multiply_values_and_store(intcode, idx):
     val1 = intcode[intcode[idx]]
     val2 = intcode[intcode[idx+1]]
     dest = intcode[idx+2]
-    value = val1 * val2
-    print(f'Multiplying: {val1=}, {val2=}, {dest=}, {value=}')
-    intcode[dest] = value
+    store = val1 * val2
+    print(f'Multiplying: {val1=}, {val2=}, {store=}, {dest=}')
+    intcode[dest] = store
 
 
 def get_intcode(filename):
@@ -46,6 +46,8 @@ def parse_intcode(program_string):
 
 def main(filename):
     intcode = get_intcode(filename)
+    intcode[1] = 12
+    intcode[2] = 2
     result = run_intcode(intcode)
     print(f'{result=}')
     return result

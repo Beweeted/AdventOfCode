@@ -5,7 +5,7 @@ from mycode import *
 class MyTestCase(unittest.TestCase):
     def test_loading_intcode(self):
         intcode = get_intcode('sample.txt')
-        self.assertEqual(len(intcode), 12)  # add assertion here
+        self.assertEqual(len(intcode), 13)
         self.assertEqual(intcode[4], 2)
         self.assertEqual(intcode[10], 40)
 
@@ -24,7 +24,7 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(run_intcode(intcode), 3500)
 
     def test_run_main(self):
-        self.assertEqual(main('sample.txt'), 3500)
+        self.assertEqual(main('sample.txt'), 100)
 
     def test_unit_tests(self):
         intcode = parse_intcode('1,0,0,0,99')
