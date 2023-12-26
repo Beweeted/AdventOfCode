@@ -2,7 +2,6 @@ def run_intcode(intcode):
     position = 0
     while True:
         instruction = intcode[position]
-        print(f'{instruction=}')
         if instruction == 99:
             break
         elif instruction == 1:
@@ -18,7 +17,6 @@ def add_values_and_store(intcode, idx):
     val2 = intcode[intcode[idx+1]]
     dest = intcode[idx+2]
     store = val1 + val2
-    print(f'Adding: {val1=}, {val2=}, {store=}, {dest=}')
     intcode[dest] = store
 
 
@@ -27,7 +25,6 @@ def multiply_values_and_store(intcode, idx):
     val2 = intcode[intcode[idx+1]]
     dest = intcode[idx+2]
     store = val1 * val2
-    print(f'Multiplying: {val1=}, {val2=}, {store=}, {dest=}')
     intcode[dest] = store
 
 
@@ -62,7 +59,6 @@ def main(intcode, magic_number=0, search=False):
 def search_injection_range(intcode, magic_number):
     for noun in range(0, 100):
         for verb in range(0, 100):
-            print(f'New iteration: {noun} - {verb}')
             new_intcode = intcode.copy()
             inject_values(new_intcode, noun, verb)
             result = run_intcode(new_intcode)
