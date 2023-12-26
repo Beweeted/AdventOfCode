@@ -36,6 +36,12 @@ class MyTestCase(unittest.TestCase):
         intcode = parse_intcode('1,1,1,4,99,5,6,0,99')
         self.assertEqual(run_intcode(intcode), 30)
 
+    def test_inject_values(self):
+        intcode = parse_intcode('1,0,0,0,99')
+        inject_values(intcode, 4, 4)
+        self.assertEqual(intcode[1] + intcode[2], 8)
+        inject_values(intcode, 562, 111)
+        self.assertEqual(intcode[1] + intcode[2], 673)
 
 if __name__ == '__main__':
     unittest.main()

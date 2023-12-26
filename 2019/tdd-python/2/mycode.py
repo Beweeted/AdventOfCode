@@ -44,10 +44,14 @@ def parse_intcode(program_string):
     return intcode
 
 
+def inject_values(intcode, val1, val2):
+    intcode[1] = val1
+    intcode[2] = val2
+
+
 def main(filename):
     intcode = get_intcode(filename)
-    intcode[1] = 12
-    intcode[2] = 2
+    inject_values(intcode, 12, 2)
     result = run_intcode(intcode)
     print(f'{result=}')
     return result
