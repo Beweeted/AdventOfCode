@@ -1,5 +1,7 @@
-def add_values(intcode, position1, position2):
-    return intcode[position1] + intcode[position2]
+def add_values_and_store(intcode, position1, position2, position3):
+    value = intcode[position1] + intcode[position2]
+    destination = intcode[position3]
+    intcode[destination] = value
 
 
 def get_intcode(filename):

@@ -7,11 +7,13 @@ class MyTestCase(unittest.TestCase):
         intcode = get_intcode('sample.txt')
         self.assertEqual(len(intcode), 12)  # add assertion here
         self.assertEqual(intcode[4], 2)
+        self.assertEqual(intcode[10], 40)
 
-    def test_intcode_addition(self):
+    def test_intcode_add_and_store(self):
         intcode = get_intcode('sample.txt')
-        self.assertEqual(add_values(intcode, 4, 8), 101)
-        self.assertEqual(add_values(intcode, 1, 10), 49)
+        add_values_and_store(intcode, 9, 10, 2)
+        self.assertEqual(intcode[10], 70)
+
 
 
 if __name__ == '__main__':
