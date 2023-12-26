@@ -24,27 +24,23 @@ def get_input(filename):
         return import_contents
 
 
-def sum_fuel(mass_list):
+def sum_fuel(mass_list, recursive=True):
     fuel_sum = 0
     for mass in mass_list:
-        fuel_sum += get_fuel(mass)
-    return fuel_sum
-
-
-def sum_fuel_recursive(mass_list):
-    fuel_sum = 0
-    for mass in mass_list:
-        fuel_sum += get_recursive_fuel(mass)
+        if recursive:
+            fuel_sum += get_recursive_fuel(mass)
+        else:
+            fuel_sum += get_fuel(mass)
     return fuel_sum
 
 
 def main(mass_file, recursive=True):
     mass_input = get_input(mass_file)
     if recursive:
-        total_fuel = sum_fuel_recursive(mass_input)
+        total_fuel = sum_fuel(mass_input, recursive)
         output = f'Recursive fuel required: {total_fuel}'
     else:
-        total_fuel = sum_fuel(mass_input)
+        total_fuel = sum_fuel(mass_input, recursive)
         output = f'Simple fuel required: {total_fuel}'
     return output
 
