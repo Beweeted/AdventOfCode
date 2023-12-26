@@ -33,11 +33,15 @@ def multiply_values_and_store(intcode, idx):
 
 def get_intcode(filename):
     with (open(filename, 'r') as file1):
-        intcode = []
-        codes = file1.readline().split(',')
-        for code in codes:
-            intcode.append(int(code))
-        return intcode
+        return parse_intcode(file1.readline())
+
+
+def parse_intcode(program_string):
+    intcode = []
+    codes = program_string.split(',')
+    for code in codes:
+        intcode.append(int(code))
+    return intcode
 
 
 def main(filename):

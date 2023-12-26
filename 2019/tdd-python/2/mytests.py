@@ -26,6 +26,16 @@ class MyTestCase(unittest.TestCase):
     def test_run_main(self):
         self.assertEqual(main('sample.txt'), 3500)
 
+    def test_unit_tests(self):
+        intcode = parse_intcode('1,0,0,0,99')
+        self.assertEqual(run_intcode(intcode), 2)
+        intcode = parse_intcode('2,3,0,3,99')
+        self.assertEqual(run_intcode(intcode), 2)
+        intcode = parse_intcode('2,4,4,5,99,0')
+        self.assertEqual(run_intcode(intcode), 2)
+        intcode = parse_intcode('1,1,1,4,99,5,6,0,99')
+        self.assertEqual(run_intcode(intcode), 30)
+
 
 if __name__ == '__main__':
     unittest.main()
