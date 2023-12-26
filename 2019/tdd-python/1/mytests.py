@@ -4,24 +4,24 @@ from mycode import *
 
 class MyTests(unittest.TestCase):
 
-    def test_fuel(self):
-        self.assertEqual(get_fuel(12), 2)
-        self.assertEqual(get_fuel(14), 2)
-        self.assertEqual(get_fuel(1969), 654)
-        self.assertEqual(get_fuel(100756), 33583)
+    def test_simple_fuel(self):
+        self.assertEqual(get_fuel(12, False), 2)
+        self.assertEqual(get_fuel(14, False), 2)
+        self.assertEqual(get_fuel(1969, False), 654)
+        self.assertEqual(get_fuel(100756, False), 33583)
 
     def test_recursive_fuel(self):
-        self.assertEqual(get_recursive_fuel(12), 2)
-        self.assertEqual(get_recursive_fuel(14), 2)
-        self.assertEqual(get_recursive_fuel(1969), 966)
-        self.assertEqual(get_recursive_fuel(100756), 50346)
+        self.assertEqual(get_fuel(12, True), 2)
+        self.assertEqual(get_fuel(14, True), 2)
+        self.assertEqual(get_fuel(1969, True), 966)
+        self.assertEqual(get_fuel(100756, True), 50346)
 
     def test_import(self):
-        self.assertEqual(len(get_input('sample.txt')), 4)
-        self.assertEqual(get_input('sample.txt')[2], 1969)
+        self.assertEqual(len(get_mass_input('sample.txt')), 4)
+        self.assertEqual(get_mass_input('sample.txt')[2], 1969)
 
     def test_fuel_sum(self):
-        test_input = get_input('sample.txt')
+        test_input = get_mass_input('sample.txt')
         self.assertEqual(sum_fuel(test_input, False), 34241)
         self.assertEqual(sum_fuel(test_input, True), 51316)
 
