@@ -24,7 +24,10 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(run_intcode(intcode), 3500)
 
     def test_run_main(self):
-        self.assertEqual(main('sample.txt'), 100)
+        intcode = get_intcode('sample.txt')
+        self.assertEqual(main(intcode), 100)
+        intcode = parse_intcode('2,0,0,0,99,8,9'+',0'*800)
+        self.assertEqual(main(intcode, 72, True), 'noun=5, verb=6, magic_number=72')
 
     def test_unit_tests(self):
         intcode = parse_intcode('1,0,0,0,99')
@@ -42,6 +45,12 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(intcode[1] + intcode[2], 8)
         inject_values(intcode, 562, 111)
         self.assertEqual(intcode[1] + intcode[2], 673)
+
+    def test_injection_search(self):
+        intcode = parse_intcode('1,0,0,0,99')
+        result = search_injection_range(intcode, 100)
+        self.assertEqual(result, 'noun=0, verb=4, magic_number=100')
+
 
 if __name__ == '__main__':
     unittest.main()

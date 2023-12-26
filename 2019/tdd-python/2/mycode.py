@@ -49,13 +49,28 @@ def inject_values(intcode, val1, val2):
     intcode[2] = val2
 
 
-def main(filename):
-    intcode = get_intcode(filename)
-    inject_values(intcode, 12, 2)
-    result = run_intcode(intcode)
-    print(f'{result=}')
+def main(intcode, magic_number=0, search=False):
+    if search:
+        result = search_injection_range(intcode, magic_number)
+    else:
+        inject_values(intcode, 12, 2)
+        result = run_intcode(intcode)
+        print(f'{result}')
     return result
 
 
+def search_injection_range(intcode, magic_number):
+    for noun in range(0, 100):
+        for verb in range(0, 100):
+            print(f'New iteration: {noun} - {verb}')
+            new_intcode = intcode.copy()
+            inject_values(new_intcode, noun, verb)
+            result = run_intcode(new_intcode)
+            if result == magic_number:
+                print(f'Search complete! {noun=} and {verb=} create magic number {magic_number}!')
+                return f'{noun=}, {verb=}, {magic_number=}'
+
+
 if __name__ == '__main__':
-    main('input.txt')
+    myintcode = get_intcode('input.txt')
+    main(myintcode, 19690720, True)
